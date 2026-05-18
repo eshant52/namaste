@@ -1,19 +1,56 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 1. SVG favicon: primary for modern browsers -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>frontend</title>
-</head>
+    <!-- 2. Apple Touch Icon: For iOS devices (Home Screen) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
 
-<body>
-  <div id="preloader" class="fixed inset-0 bg-background z-50 flex items-center justify-center">
-    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-  </div>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+    <!-- 3. ICO fallback: keep as alternate for older/legacy clients -->
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namaste Chat</title>
+    <style>
+      #preloader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        z-index: 9999;
+        transition: opacity 0.4s ease-in-out;
+      }
 
+      .spinner {
+        width: 64px;
+        height: 64px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border: 2px solid transparent;
+        border-top-color: #2e6f40;
+        border-radius: 50%;
+        animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="preloader">
+      <div class="spinner"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
